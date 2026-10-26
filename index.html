@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sight Flash — bass sight-reading coach</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Manrope:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <div id="app" class="shell">
+      <header class="brand-bar">
+        <p class="brand">Sight Flash</p>
+        <p class="tagline">Play the note. Hear the score.</p>
+      </header>
+
+      <main class="stage" id="stage" data-flash="">
+        <div class="staff-wrap" aria-live="polite">
+          <svg id="staff" class="staff" viewBox="0 0 640 220" role="img" aria-label="Music staff"></svg>
+          <p class="note-name" id="noteName">—</p>
+        </div>
+
+        <div class="status-row">
+          <span class="pill" id="listenState">idle</span>
+          <span class="detected" id="detectedPitch">detected: —</span>
+        </div>
+
+        <div class="scoreboard">
+          <div><span class="label">score</span><strong id="score">0</strong></div>
+          <div><span class="label">streak</span><strong id="streak">0</strong></div>
+          <div><span class="label">tried</span><strong id="tried">0</strong></div>
+        </div>
+      </main>
+
+      <section class="controls" aria-label="Session controls">
+        <div class="control-grid">
+          <label>
+            Clef
+            <select id="clef">
+              <option value="bass" selected>Bass</option>
+              <option value="treble">Treble</option>
+            </select>
+          </label>
+
+          <label>
+            Range min
+            <select id="rangeMin"></select>
+          </label>
+
+          <label>
+            Range max
+            <select id="rangeMax"></select>
+          </label>
+
+          <label>
+            Note names
+            <select id="showNames">
+              <option value="always">Always show</option>
+              <option value="after">Only after attempt</option>
+            </select>
+          </label>
+
+          <label class="toggle">
+            <span class="toggle-text">Sharps &amp; flats</span>
+            <span class="toggle-row">
+              <input type="checkbox" id="accidentals" checked />
+              <span class="toggle-hint" id="accidentalsHint">on — include ♯/♭</span>
+            </span>
+          </label>
+
+          <label class="device">
+            Input device
+            <select id="device">
+              <option value="">Default / request permission…</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="actions">
+          <button type="button" id="resetScore" class="ghost" title="Clear score, streak, and tried">
+            Reset score
+          </button>
+          <button type="button" id="refreshDevices" class="ghost">Refresh devices</button>
+          <button type="button" id="toggleMidi" class="ghost" title="Optional Web MIDI note-on/off of detected pitch">
+            MIDI out: off
+          </button>
+          <button type="button" id="startStop" class="primary">Start</button>
+        </div>
+
+        <p class="hint">
+          Use <strong>localhost</strong> or HTTPS. Pick <strong>HX Stomp</strong> (or your interface) as input.
+          If Bitwig / HX Edit has exclusive access, close them or disable exclusive mode.
+        </p>
+      </section>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>

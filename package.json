@@ -1,0 +1,17 @@
+{
+  "name": "sight-flash",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Bass-first sight-reading flash coach with Web Audio pitch detection",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 127.0.0.1 --port 5173",
+    "build": "vite build",
+    "preview": "vite preview --host 127.0.0.1 --port 5173",
+    "smoke": "node scripts/smoke.mjs"
+  },
+  "devDependencies": {
+    "vite": "^8.3.4"
+  }
+}
